@@ -51,4 +51,5 @@ meeting the relevant assumptions, etc. In the report (up to 4 pages A4 + 1 page 
 1. Prove that Cox proportional hazards model is not the best model in this case.
 2. Try adding INST as a cluster variable to the cox model (add + cluster(INST) to the model formula) to verify whether this variable indicate observations' correlation within the institution.
 3. Try running Accelerated Failure Time model.
-0. Remmber to change variables to factors.
+
+> Remember to change variables to factors.

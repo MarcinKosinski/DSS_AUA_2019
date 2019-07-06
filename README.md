@@ -46,7 +46,7 @@ During the lecture I'm more than excited to walk participants through basics and
 - [Survival curves](https://github.com/MarcinKosinski/DSS_AUA_2019/tree/master/projects/01_curves)
 - [Cox Proportional Hazards Model](https://github.com/MarcinKosinski/DSS_AUA_2019/tree/master/projects/02_cox)
 - [Multi-state Cox model](https://github.com/MarcinKosinski/DSS_AUA_2019/tree/master/projects/03_mchurn)
-- [Recurring Events case](https://github.com/MarcinKosinski/DSS_AUA_2019/tree/master/projects/04_recurring)
+- [Parametric models (AFT) case](https://github.com/MarcinKosinski/DSS_AUA_2019/tree/master/projects/04_aft)
 
 # Extra materials
 
