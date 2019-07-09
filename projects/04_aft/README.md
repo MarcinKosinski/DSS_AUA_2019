@@ -1,3 +1,5 @@
+# Throat oral cancer survival analysis
+
 # Pharynx
 
 The "pharynx.csv" file contains data on 195 throat oral cancer patients enrolled in
@@ -46,10 +48,14 @@ TIME survival time in days from the date of diagnosis
 
 We are interested in the impact of treatment on the survival time of patients. 
 Perform adequate data analysis. If you use models, rate their adjustment to the data,
-meeting the relevant assumptions, etc. In the report (up to 4 pages A4 + 1 page on syntax) enter used syntax, necessary graphs and results and their interpretation.
+meeting the relevant assumptions, etc. In the report (up to 4 pages A8 + 1 page on syntax) enter used syntax, necessary graphs and results and their interpretation.
 
-1. Prove that Cox proportional hazards model is not the best model in this case.
-2. Try adding INST as a cluster variable to the cox model (add + cluster(INST) to the model formula) to verify whether this variable indicate observations' correlation within the institution.
-3. Try running Accelerated Failure Time model.
+## Guidelines
+
+1. Based on classes: scripts/answers/02_cox_answers.R and projects/02_cox/02_cox_solution.R prove that Cox proportional hazards model is not the best model in this case, since many assumptions are not satisfied.
+2. For the purpose of this class, pleas omit the INST variable. Since it's can be a potential source of the observations' dependence, due to the better or worse conditions in some institutions that could affect the survival rate.
+3. Based on classes: scripts/exercises/04_aft_exercises.R try running Accelerated Failure Time model for the proper distribution function.
 
 > Remember to change variables to factors.
+> Remember to get the newest version of the repository https://github.com/MarcinKosinski/DSS_AUA_2019
+> REmember that data are in the data/ folder on the repository.
