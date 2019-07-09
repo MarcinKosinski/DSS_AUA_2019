@@ -29,7 +29,7 @@ In the report (up to 5 A4 pages, including 1 page on syntax), use the syntax you
 results and their interpretation.
 
 # 1. read data
-# 2. plots survival curves for the categorical data (try p.val = TRUE)
+# 2. plots survival curves for the categorical data (try pval = TRUE)
 # 3. fit the model
 # 4. use ggcoxxph to check the assumption of coefficients stability over time
 # 5. use ggcoxfunctional to verify the fuctional form of continuos variables
