@@ -18,7 +18,7 @@ surv_data <- read.dta("data/gbcs_short.dta")
 - size - tumor size (in cm)
 - nodes - the number of lymph nodes with tumor metastases
 - rectime - time of survival without relapse (days)
-- ensrec - event indicator (0 - censoring, 1- death or relapse)
+- censrec - event indicator (0 - censoring, 1- death or relapse)
 
 We are interested in the question of which variables affect the survival time without recurrence of the disease?
 Conduct an appropriate data analysis using the previously known methods of analysis
