@@ -40,12 +40,13 @@ During the lecture I'm more than excited to walk participants through basics and
     * Functions to run model for multi-state scenario
 - Part 4 - When Cox assumptions are not met
     * Accelerated Failure Time models
+      * What are common distributions for time of survival?
+      * How to determine the best family of distributions to be applied to a time model?
+      * How to interpret results of the AFT model's coefficients?
   
 # Projects
 
-- [Survival curves](https://github.com/MarcinKosinski/DSS_AUA_2019/tree/master/projects/01_curves)
 - [Cox Proportional Hazards Model](https://github.com/MarcinKosinski/DSS_AUA_2019/tree/master/projects/02_cox)
-- [Multi-state Cox model](https://github.com/MarcinKosinski/DSS_AUA_2019/tree/master/projects/03_mchurn)
 - [Parametric models (AFT) case](https://github.com/MarcinKosinski/DSS_AUA_2019/tree/master/projects/04_aft)
 
 # Extra materials
