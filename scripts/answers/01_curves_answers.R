@@ -20,6 +20,12 @@ head(clinical)
 # with the help of survival::survfit function and ?Surv object.
 
 summary(survival::survfit(Surv(times, patient.vital_status) ~ 1, data = clinical))
+
+ggsurvplot(
+  survival::survfit(Surv(times, patient.vital_status) ~ 1, data = clinical),
+  risk.table = TRUE
+  )
+
 transactional2 <-
   transactional %>%
   mutate(time = ifelse(is.na(ended_at),
@@ -71,7 +77,7 @@ survey2 <-
 
 survey_transactional <-
   bind_rows(
-    survey2 %>% ungroup %>% select(time, event) %>% mutate(source = 'survey'),
+        survey2 %>% ungroup %>% select(time, event) %>% mutate(source = 'survey'),
     transactional2 %>% select(time, event = status) %>% mutate(source = 'transactional')
   )
 
@@ -81,6 +87,10 @@ transactional_fit <- survival::survfit(Surv(time, status)                ~ 1, da
 survey_fit        <- survival::survfit(Surv(time, event)                 ~ 1, data = survey2)
 gathered_fit      <- survival::survfit(Surv(time, event)                 ~ source, data = survey_transactional)
 
+ggsurvplot(
+  gathered_fit, 
+  data = survey_transactional
+)
 
 ggsurv <- 
   ggsurvplot(
@@ -217,6 +227,7 @@ parameters <-
     risk.table.height = 0.25, # Useful to change when you have multiple groups
     ggtheme = theme_bw()      # Change ggplot2 theme
   )
+
 do.call(ggsurvplot, parameters)
 
 parameters[['pval']] <- FALSE

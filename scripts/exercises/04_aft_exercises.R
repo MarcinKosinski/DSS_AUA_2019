@@ -19,9 +19,11 @@ AFT.GG      <- flexsurvreg(Surv(rectime,censrec)~horm+prog+estr+as.factor(grade)
                            data = gbsc, dist="gengamma")
 AFT.GF      <- flexsurvreg(Surv(rectime,censrec)~horm+prog+estr+as.factor(grade)+meno+size+nodes, 
                            data = gbsc, dist="genf")
+# AFT.LL      <- flexsurvreg(Surv(rectime,censrec)~horm+prog+estr+as.factor(grade)+meno+size+nodes, 
+#                            data = gbsc, dist="genf", inits=c(3,0.2,0,1,0,0,0,0,0,0,0,0), 
+#                       fixedpars = c(3,4))
 AFT.LL      <- flexsurvreg(Surv(rectime,censrec)~horm+prog+estr+as.factor(grade)+meno+size+nodes, 
-                           data = gbsc, dist="genf", inits=c(3,0.2,0,1,0,0,0,0,0,0,0,0), 
-                      fixedpars = c(3,4))
+                           data = gbsc, dist="llogis")
 AFT.Weibull <- flexsurvreg(Surv(rectime,censrec)~horm+prog+estr+as.factor(grade)+meno+size+nodes, 
                            data = gbsc, dist="weibull")
 AFT.LN      <- flexsurvreg(Surv(rectime,censrec)~horm+prog+estr+as.factor(grade)+meno+size+nodes, 
@@ -39,6 +41,7 @@ matrix( c(AFT.GG$loglik,                # loglik generalized G
 
 rownames(logliks) <- c("Gen Gamma", "Gen F", "Log-logistic", "Weibull", "Log-normal")
 colnames(logliks) <- "loglik"
+logliks
 #p-values of tests:
 matrix(round(c(1-pchisq(2*(AFT.GF$loglik-AFT.GG$loglik),2),
                1-pchisq(2*(AFT.GG$loglik-AFT.LL$loglik),2),
@@ -51,7 +54,7 @@ colnames(comparisons) <- "p-value"
 # It was found at the significance level alpha = 0.05, after Bonferroni correction including 4 tests, i.e. 
 # at the significance level for a single test equal to $ alpha_i = 0.0125, i = 1,2,3,4 $, 
 # that there are no reasonss for rejecting the null hypothesis in the test that the from smaller family of generalized gamma distributions
-# is correct in comparison to the model from a larger family of generalized F distributions Next, 
+# is correct in comparison to the model from a larger family of generalized F distributions. Next, 
 # for the distribution from the generalized family of gamma distributions, 
 # 3 tests were carried out to check if the models from the smaller family (log-normal, log-logistic, Weibull) 
 # are proper in comparison to the distribution from the generalized family of gamma distributions. 

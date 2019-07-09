@@ -28,6 +28,19 @@ coefficients and their interpretation.
 In the report (up to 5 A4 pages, including 1 page on syntax), use the syntax you need, and the necessary graphs
 results and their interpretation.
 
+# 1. read data
+# 2. plots survival curves for the categorical data (try p.val = TRUE)
+# 3. fit the model
+# 4. use ggcoxxph to check the assumption of coefficients stability over time
+# 5. use ggcoxfunctional to verify the fuctional form of continuos variables
+# 6. use ggcoxdiagnostics to plot the diagnostic plots (look out for outliers)
+# 7. if all god with 4), 5) and 6) then interpret the results
+
+# NOTE if for one of the vars the assumptions are not met, put it as a strata(var)
+# into the formula
+# coxph(Surv(time, event) + var1 + var2 + strata(var3) ...., data = )
+
+
 # extra - RTCGA
 
 One can also extend the `clinical` data creation prepared in `scripts/clinical_data_preparations.R` and fit the model for

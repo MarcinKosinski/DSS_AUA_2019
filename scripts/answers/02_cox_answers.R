@@ -56,7 +56,7 @@ ggcoxfunctional(Surv(time, status) ~ age + log(age) + sqrt(age), data = lung)
 # of cox model assumptions for survey+transactional and clinical datasets.
 
 transactional2_coxph <- 
-  coxph(Surv(time, status) ~ paid_order_count + gender,
+  coxph(Surv(time, status) ~ as.numeric(paid_order_count) + gender,
         data = transactional2)
 
 ggcoxzph(cox.zph(transactional2_coxph))
@@ -70,7 +70,7 @@ coxph(Surv(time, status) ~ log(paid_order_count) + strata(gender), data = transa
 # exercise 8 --------------------------------------------------------------
 
 # Plot the baseline survival function
-ggsurvplot(survfit(res.cox), color = "#2E9FDF", ggtheme = theme_minimal())
+ggsurvplot(survfit(res.cox), color = "#2E9FDF", ggtheme = theme_minimal(), data = lung)
 # Having fit a Cox model to the data, it’s possible to visualize the predicted survival
 # proportion at any given point in time for a particular risk group. 
 # The function survfit() estimates the survival proportion, by default at the mean values of covariates.
@@ -83,13 +83,13 @@ ggsurvplot(survfit(res.cox), color = "#2E9FDF", ggtheme = theme_minimal())
 sex_df <- with(lung,
                data.frame(sex = c(1, 2), 
                           age = rep(mean(age, na.rm = TRUE), 2),
-                          ph.ecog = c(1, 1)
+                          wt.loss = c(1, 1)
                )
 )
 sex_df
 # Survival curves
 fit <- survfit(res.cox, newdata = sex_df)
-ggsurvplot(fit, conf.int = TRUE, legend.labs=c("Sex=1", "Sex=2"), ggtheme = theme_minimal())
+ggsurvplot(fit, conf.int = TRUE, legend.labs=c("Sex=1", "Sex=2"), ggtheme = theme_minimal(), data = lung)
 
 
 
@@ -98,9 +98,9 @@ ggsurvplot(fit, conf.int = TRUE, legend.labs=c("Sex=1", "Sex=2"), ggtheme = them
 # Fit complex survival curves
 
 fit2 <- survfit( Surv(time, status) ~ sex + rx + adhere, data = colon )
-ggsurv <- ggsurvplot(fit2, fun = "event", conf.int = TRUE, ggtheme = theme_bw())
+ggsurv <- ggsurvplot(fit2, conf.int = TRUE, ggtheme = theme_bw())
 
 ggsurv$plot + 
-  theme_bw() + 
-  theme (legend.position = "right")+
-  facet_grid(rx ~ adhere)
+  #theme_bw() + 
+  #theme(legend.position = "right")+
+  facet_wrap(rx ~ adhere)

@@ -9,7 +9,8 @@
 
 msdata <- readRDS('data/msdata.rds')
 head(msdata)
-library(tidyr)
+# install.packages('mstate')
+library(tidyr);library(dplyr);library(mstate)
 count(msdata, year, age, discount, gender) %>% spread(year, n) 
 
 # transition matrix -------------------------------------------------------
@@ -91,19 +92,19 @@ plot(msf0, las = 1, lty = rep(1:2, c(8, 4)),
 
 pt0 <- probtrans(msf0, predt = 0, method = "greenwood")
 capture.output(summary(pt0, from = 1)) -> x
-# save(x, file = 'data/x.rda')
-x[-c(1:4)] %>% strsplit(split=" ") %>% 
-  lapply(function(y){ y[y != ""]}) %>%
-  .[c(2:7, 12:17)] %>%
-  lapply(as.data.frame) %>% 
-  lapply(t) %>%
-  do.call(rbind, .) %>%
-  apply(MARGIN = 2, as.numeric) %>%
-  apply(MARGIN = 2, round, 3) %>%
-  as.data.frame() %>%
-  select(2:7) %>%
-  set_colnames(c('time', 'State 1', 'State 2', 'State 3', 'State 4', 'State 5'))
-capture.output(summary(pt0, from = 2)) -> y
+# # save(x, file = 'data/x.rda')
+# x[-c(1:4)] %>% strsplit(split=" ") %>% 
+#   lapply(function(y){ y[y != ""]}) %>%
+#   .[c(2:7, 12:17)] %>%
+#   lapply(as.data.frame) %>% 
+#   lapply(t) %>%
+#   do.call(rbind, .) %>%
+#   apply(MARGIN = 2, as.numeric) %>%
+#   apply(MARGIN = 2, round, 3) %>%
+#   as.data.frame() %>%
+#   select(2:7) %>%
+#   set_colnames(c('time', 'State 1', 'State 2', 'State 3', 'State 4', 'State 5'))
+# capture.output(summary(pt0, from = 2)) -> y
 # save(y, file = 'data/y.rda')
 
 
